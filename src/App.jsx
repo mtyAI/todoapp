@@ -72,14 +72,21 @@ function ProgressRing({ done, total }) {
   const offset = circ * (1 - pct);
 
   return (
-    <div className="relative flex items-center justify-center w-28 h-28 flex-shrink-0">
+    <div className="relative flex items-center justify-center w-28 h-28 shrink-0">
       <svg
         width="112"
         height="112"
         viewBox="0 0 112 112"
         className="absolute -rotate-90"
       >
-        <circle cx="56" cy="56" r={r} fill="none" stroke="#ede9fe" strokeWidth="10" />
+        <circle
+          cx="56"
+          cy="56"
+          r={r}
+          fill="none"
+          stroke="#ede9fe"
+          strokeWidth="10"
+        />
         <circle
           cx="56"
           cy="56"
@@ -90,7 +97,9 @@ function ProgressRing({ done, total }) {
           strokeLinecap="round"
           strokeDasharray={circ}
           strokeDashoffset={offset}
-          style={{ transition: "stroke-dashoffset 0.7s cubic-bezier(0.4,0,0.2,1)" }}
+          style={{
+            transition: "stroke-dashoffset 0.7s cubic-bezier(0.4,0,0.2,1)",
+          }}
         />
         <defs>
           <linearGradient
@@ -155,7 +164,7 @@ export default function App() {
 
   const toggle = (id) => {
     setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
     );
     setPoppedIds((prev) => [...prev, id]);
   };
@@ -177,9 +186,8 @@ export default function App() {
   // ── Render ────────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-100 py-10 px-4">
+    <div className="min-h-screen bg-linear-to-br from-violet-50 via-purple-50 to-indigo-100 py-10 px-4">
       <div className="w-full max-w-lg mx-auto">
-
         {/* ── Header ── */}
         <div className="mb-8 text-center">
           <h1
@@ -301,7 +309,9 @@ export default function App() {
               </div>
             </div>
             <div className="flex-1">
-              <p className="text-xs text-gray-400 font-medium mb-1.5">締め切り</p>
+              <p className="text-xs text-gray-400 font-medium mb-1.5">
+                締め切り
+              </p>
               <input
                 type="date"
                 value={deadline}
@@ -444,7 +454,7 @@ export default function App() {
                 <button
                   onClick={() => toggle(task.id)}
                   className={[
-                    "flex-shrink-0 mt-0.5 w-5 h-5 rounded-full border-2",
+                    "shrink-0 mt-0.5 w-5 h-5 rounded-full border-2",
                     "flex items-center justify-center transition",
                     task.done
                       ? "bg-violet-500 border-violet-500"
@@ -456,7 +466,11 @@ export default function App() {
                   }
                 >
                   {task.done && (
-                    <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 10 8">
+                    <svg
+                      className="w-2.5 h-2.5 text-white"
+                      fill="none"
+                      viewBox="0 0 10 8"
+                    >
                       <path
                         d="M1 4l3 3 5-6"
                         stroke="currentColor"
@@ -509,7 +523,7 @@ export default function App() {
                 {/* 削除ボタン */}
                 <button
                   onClick={() => remove(task.id)}
-                  className="flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 text-gray-300 hover:text-red-400 transition"
+                  className="shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 text-gray-300 hover:text-red-400 transition"
                   aria-label="削除"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16">
