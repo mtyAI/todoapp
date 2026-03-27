@@ -12,6 +12,7 @@ Calendar,
   ListTodo,
   Sparkles,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -634,6 +635,7 @@ export default function App() {
           <p className="text-xs text-muted-foreground/40">My Tasks • 今日も頑張ろう 💪</p>
         </div>
       </div>
+      <Analytics />
     </div>
   );
 }
